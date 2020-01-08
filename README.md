@@ -6,6 +6,8 @@ Application is written using NodeJS with the help of serverless framework. Front
 
 Read more [here](https://almirzulic.com/posts/serverless-gif-video-converter/).
 
+Try it in production [here](https://gif.ba).
+
 **CREDITS** 
 - https://github.com/serverlesspub/ffmpeg-aws-lambda-layer
 - https://github.com/dylang/shortid#readme
