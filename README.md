@@ -4,7 +4,7 @@ This is a serverless implementation of video to gif converter hosted on AWS. It 
 
 Application is written using NodeJS with the help of serverless framework. Fronted is written using vanilla JavaScript - no external libraries involved. 
 
-Read more [here](https://almirzulic.com/posts/serverless-gif-video-converter/).
+Read more [here](https://almirzulic.com/posts/serverless-gif-converter-and-url-shortener/).
 
 Try it in production [here](https://gif.ba).
 
