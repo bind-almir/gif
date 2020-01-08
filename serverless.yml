@@ -1,0 +1,58 @@
+service: gif
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  timeout: 30
+  environment:
+    STAGE: ${opt:stage}
+    SETTINGS: ${ssm:GIF_SETTINGS~true}
+  iamManagedPolicies: 
+    - arn:aws:iam::aws:policy/AmazonS3FullAccess
+    - arn:aws:iam::aws:policy/AWSLambdaFullAccess
+    - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+    - arn:aws:iam::aws:policy/SecretsManagerReadWrite
+
+functions:
+
+  get-upload: 
+    handler: functions/get-upload.handler
+    events: 
+      - http: 
+          cors: true
+          path: /
+          method: get
+        
+  post-upload: 
+    handler: functions/post-upload.handler
+    events: 
+      - http: 
+          cors: true
+          path: upload
+          method: post
+
+  post-signed: 
+    handler: functions/post-signed.handler
+    events: 
+      - http: 
+          cors: true
+          path: signed
+          method: post
+
+  convert: 
+    handler: functions/convert.handler
+    layers:
+      - arn:aws:lambda:eu-west-1:161728447039:layer:ffmpeg:1
+    events: 
+      - http: 
+          cors: true
+          path: convert
+          method: post
+
+  get-file: 
+    handler: functions/get-file.handler
+    events: 
+      - http: 
+          cors: true
+          path: /{any+}
+          method: get
