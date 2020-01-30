@@ -10,11 +10,13 @@ const handler = async event => {
       table: 'urls',
       key: file
     }); 
-    console.log(Item)
+    console.log(Item);
     const signedUrl = await getSignedUrl('getObject', convert_bucket, Item.data);
+    console.log(signedUrl);
     return {
       statusCode: 301,
       headers: {
+        'Cache-control': 'max-age=0',
         Location: signedUrl
       }
     }
