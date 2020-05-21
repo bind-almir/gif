@@ -1,7 +1,7 @@
-const AWS = require('aws-sdk');
+const { S3 } = require('aws-sdk');
 const fs = require('fs');
 
-const s3 = new AWS.S3();
+const s3 = new S3();
 
 const createBucket = async (Bucket) => await s3.createBucket( { Bucket } ).promise();
 const deleteBucket = async (Bucket) => await s3.deleteBucket( { Bucket } ).promise();
