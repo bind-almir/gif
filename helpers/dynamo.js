@@ -1,8 +1,8 @@
 // no need to include aws-sdk into package.json it's already part of lambda environment
-const AWS = require('aws-sdk');
+const { DynamoDB } = require('aws-sdk');
 
-const dynamo = new AWS.DynamoDB();
-const docClient = new AWS.DynamoDB.DocumentClient();
+const dynamo = new DynamoDB();
+const docClient = new DynamoDB.DocumentClient();
 
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#createTable-property
 const createTable = async (params) => {
